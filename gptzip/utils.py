@@ -1,6 +1,8 @@
+from typing import Tuple
 import numpy as np
 
-def bits_to_bytes(bits: str) -> tuple[bytes, int]:
+
+def bits_to_bytes(bits: str) -> Tuple[bytes, int]:
   """Returns the bytes representation of bitstream and number of padded bits."""
   # Pad the string with zeros if the length is not a multiple of 8.
   padded_bits = bits.zfill((len(bits) + 7) // 8 * 8)
@@ -20,7 +22,7 @@ def bytes_to_bits(data: bytes, num_padded_bits: int = 0) -> str:
   return ''.join([bin(byte)[2:].zfill(8) for byte in data])[num_padded_bits:]
 
 
-def right_shift_bytes_by_one(data: bytes) -> tuple[bytes, int]:
+def right_shift_bytes_by_one(data: bytes) -> Tuple[bytes, int]:
   """Returns right-shifted bytes, i.e., divided by 2, and the number of bytes.
 
   Our language models were trained on ASCII data. However, not all bytes can be
@@ -40,7 +42,7 @@ def right_shift_bytes_by_one(data: bytes) -> tuple[bytes, int]:
 
 def zero_most_significant_bit_if_not_ascii_decodable(
     data: bytes,
-) -> tuple[bytes, int]:
+) -> Tuple[bytes, int]:
   """Returns ascii-decodable data & the number of zeroed most significant bits.
 
   Our language models were trained on ASCII data. However, not all bytes can be

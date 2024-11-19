@@ -52,7 +52,7 @@ class ArithmeticCoder:
         self,
         data: str,
         return_num_padded_bits: bool = False,
-    ) -> Union[bytes, tuple[bytes, int]]:
+    ) -> Union[bytes, Tuple[bytes, int]]:
         """Compresses the `data` using arithmetic coding and a pretrained model.
 
         Args:
